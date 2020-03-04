@@ -1,5 +1,5 @@
 <template>
   <div>
-    <router-view />
+    菜单1-1
   </div>
 </template>

@@ -35,8 +35,6 @@ module.exports = {
   }
    */
 
-
-
   css: {
     loaderOptions: {
       scss: {
@@ -66,5 +64,6 @@ module.exports = {
         target: '<other_url>'
       }
     }*/
+    before: require('./mock/mock-server')
   }
 };

@@ -15,7 +15,6 @@
 
 <script>
   import { mapGetters } from 'vuex'
-  import { asyncRoutes } from '@/router'
   import SidebarItem from './SidebarItem'
 
   export default {
@@ -23,15 +22,11 @@
     components: {
       SidebarItem
     },
-    data() {
-      return {
-        permission_routes: asyncRoutes,
-      };
-    },
     computed: {
       ...mapGetters([
         // 展开/收缩
         'sidebar',
+        'permission_routes'
       ]),
       // 默认激活的菜单
       activeMenu() {

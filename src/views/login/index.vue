@@ -1,9 +1,9 @@
 <template>
   <div class="login-container">
     <el-form
-      :model="ruleForm"
+      :model="loginForm"
       :rules="rules"
-      ref="ruleForm"
+      ref="loginForm"
       label-width="100px"
       class="login-form"
       :hide-required-asterisk="true"
@@ -13,14 +13,14 @@
         <h3 class="title">Login</h3>
       </div>
       <el-form-item prop="username" label-width="0">
-        <el-input v-model="ruleForm.username" prefix-icon="el-icon-user" placeholder="请输入账号"></el-input>
+        <el-input v-model="loginForm.username" prefix-icon="el-icon-user" placeholder="请输入账号"></el-input>
       </el-form-item>
       <el-form-item prop="password" label-width="0">
-        <el-input show-password v-model="ruleForm.password" prefix-icon="el-icon-unlock" placeholder="请输入密码"></el-input>
+        <el-input show-password v-model="loginForm.password" prefix-icon="el-icon-unlock" placeholder="请输入密码"></el-input>
       </el-form-item>
       <el-form-item class="login-form__btns" label-width="0">
-        <el-button type="primary" @click="submitForm('ruleForm')">Login</el-button>
-        <el-button @click="resetForm('ruleForm')">Reset</el-button>
+        <el-button type="primary" @click="submitForm('loginForm')">Login</el-button>
+        <el-button @click="resetForm('loginForm')">Reset</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -31,7 +31,7 @@
     name: "Login",
     data() {
       return {
-        ruleForm: {
+        loginForm: {
           username: '',
           password: ''
         },
@@ -49,7 +49,11 @@
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            this.$router.push({ name : 'Home' })
+            this.$store.dispatch('user/login', this.loginForm).then(() => {
+              this.$router.push({ path : '/' })
+            }).catch(err => {
+              console.log(err)
+            })
           } else {
             console.log('error submit!!');
             return false;

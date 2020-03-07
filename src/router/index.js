@@ -65,7 +65,7 @@ export const asyncRoutes = [
     meta: {
       title: 'Permission',
       icon: 'el-icon-menu',
-      roles: ['admin'],
+      roles: ['admin', 'other'],
       isSubmenu: true
     },
     children: [
@@ -197,7 +197,7 @@ export const asyncRoutes = [
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes: [...constantRoutes, ...asyncRoutes]
+  routes: constantRoutes
 });
 
 export default router

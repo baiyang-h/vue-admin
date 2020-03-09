@@ -1,6 +1,7 @@
 import { request_login, request_getInfo } from '@/api/user'
 import { Message } from 'element-ui';
 import { getToken, setToken, removeToken } from '@/utils/token'
+import { resetRouter } from '@/router'
 
 
 const state = {
@@ -36,6 +37,20 @@ const actions = {
       }).catch(error => {
         reject(error)
       })
+    })
+  },
+
+  // 退出登录
+  logout({ commit, dispatch }) {
+    return new Promise(resolve => {
+      // 清空 用户信息
+      dispatch('resetToken');
+      // 清空 路由信息
+      commit('permission/REMOVE_ROUTES', null, {root: true});
+      // 重置路由
+      resetRouter();
+
+      resolve();
     })
   },
 

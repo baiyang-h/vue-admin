@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-aside width="auto">
+    <el-aside :width="sidebar.opened ? '200px' : '64px'">
       <sidebar class="el-aside__sidebar" />
     </el-aside>
     <el-container>
@@ -17,12 +17,19 @@
 <script>
   import Sidebar from './components/Sidebar';
   import Navbar from "./components/Navbar";
+  import { mapGetters } from 'vuex'
 
   export default {
     name: "Layout",
     components: {
       Sidebar,
       Navbar
+    },
+    computed: {
+      ...mapGetters([
+        // 展开/收缩
+        'sidebar',
+      ]),
     }
   }
 </script>

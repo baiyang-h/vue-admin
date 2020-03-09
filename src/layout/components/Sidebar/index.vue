@@ -5,8 +5,6 @@
     :unique-opened="false"
     :collapse-transition="false"
     :class="{ 'el-menu-vertical-demo': true, 'sidebar-container': !sidebar.opened }"
-    @open="handleOpen"
-    @close="handleClose"
     router
   >
     <sidebar-item v-for="route in permission_routes" :key="route.path" :route="route" :base-path="route.path"></sidebar-item>
@@ -34,14 +32,6 @@
         return path
       }
     },
-    methods: {
-      handleOpen(key, keyPath) {
-        console.log(key, keyPath);
-      },
-      handleClose(key, keyPath) {
-        console.log(key, keyPath);
-      }
-    }
   }
 </script>
 

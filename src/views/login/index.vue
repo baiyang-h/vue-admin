@@ -32,8 +32,8 @@
     data() {
       return {
         loginForm: {
-          username: '',
-          password: ''
+          username: 'admin',
+          password: '123'
         },
         rules: {
           username: [
@@ -42,15 +42,19 @@
           password: [
             { required: true, message: '请输入密码', trigger: 'blur' },
           ],
-        }
+        },
+        redirect: undefined
       }
+    },
+    created() {
+      this.redirect = this.$route.query.redirect;
     },
     methods: {
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
             this.$store.dispatch('user/login', this.loginForm).then(() => {
-              this.$router.push({ path : '/' })
+              this.$router.push({ path : this.redirect || '/' })
             }).catch(err => {
               console.log(err)
             })

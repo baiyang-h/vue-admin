@@ -89,9 +89,64 @@ export const asyncRoutes = [
     ]
   },
   {
+    path: '/components',
+    component: Layout,
+    redirect: '/components/tinymce',
+    name: 'components',
+    meta: {
+      title: 'Components',
+      icon: 'el-icon-menu',
+      isSubmenu: true
+    },
+    children: [
+      {
+        path: 'tinymce',
+        component: () => import('@/views/components/tinymce'),
+        name: 'Tinymce',
+        meta: { title: 'Tinymce' }
+      },
+      {
+        path: 'markdown',
+        component: () => import('@/views/components/markdown'),
+        name: 'Markdown',
+        meta: { title: 'Markdown' }
+      },
+      {
+        path: 'json-editor',
+        component: () => import('@/views/components/json-editor'),
+        name: 'JsonEditor',
+        meta: { title: 'JSON Editor' }
+      },
+      {
+        path: 'upload',
+        component: () => import('@/views/components/upload'),
+        name: 'Upload',
+        meta: { title: '文件上传' }
+      },
+      {
+        path: 'count-to',
+        component: () => import('@/views/components/count-to'),
+        name: 'CountTo',
+        meta: { title: '计数' }
+      },
+      {
+        path: 'back-to-top',
+        component: () => import('@/views/components/back-to-top'),
+        name: 'BackToTop',
+        meta: { title: '回到顶部' }
+      },
+      {
+        path: 'drag-list',
+        component: () => import('@/views/components/drag-list'),
+        name: 'DragList',
+        meta: { title: '拖拽 List' }
+      },
+    ]
+  },
+  {
     path: '/table',
     component: Layout,
-    redirect: '/table/drag-table',
+    redirect: '/table/dynamic-table',
     name: 'Table',
     meta: {
       title: 'Table',
@@ -99,6 +154,12 @@ export const asyncRoutes = [
       isSubmenu: true
     },
     children: [
+      {
+        path: 'dynamic-table',
+        component: () => import('@/views/table/dynamic-table'),
+        name: 'DynamicTable',
+        meta: { title: '选择列' }
+      },
       {
         path: 'drag-table',
         component: () => import('@/views/table/drag-table'),
@@ -116,7 +177,51 @@ export const asyncRoutes = [
         component: () => import('@/views/table/complex-table'),
         name: 'ComplexTable',
         meta: { title: '综合 Table' }
+      },
+      {
+        path: 'scroll-table',
+        component: () => import('@/views/table/scroll-table'),
+        name: 'ScrollTable',
+        meta: { title: '滚动加载' }
       }
+    ]
+  },
+  {
+    path: '/dialog',
+    component: Layout,
+    redirect: '/dialog/drag-dialog',
+    name: 'Dialog',
+    meta: {
+      title: 'Dialog',
+      icon: 'el-icon-menu',
+      isSubmenu: true
+    },
+    children: [
+      {
+        path: 'drag-dialog',
+        component: () => import('@/views/dialog/drag-dialog'),
+        name: 'DragDialog',
+        meta: { title: '拖拽 Dialog' }
+      },
+    ]
+  },
+  {
+    path: '/form',
+    component: Layout,
+    redirect: '/form/base-form',
+    name: 'Form',
+    meta: {
+      title: 'Form',
+      icon: 'el-icon-menu',
+      isSubmenu: true
+    },
+    children: [
+      {
+        path: 'base-form',
+        component: () => import('@/views/form/base-form'),
+        name: 'BaseForm',
+        meta: { title: '基础 Form' }
+      },
     ]
   },
   {
@@ -181,23 +286,123 @@ export const asyncRoutes = [
     ]
   },
   {
+    path: '/charts',
+    component: Layout,
+    redirect: '/charts/charts1',
+    name: 'Charts',
+    meta: {
+      title: 'Charts',
+      icon: 'el-icon-menu',
+      isSubmenu: true
+    },
+    children: [
+      {
+        path: 'charts1',
+        component: () => import('@/views/charts/charts1'),
+        name: 'Charts1',
+        meta: { title: 'Charts 1' }
+      },
+    ]
+  },
+  {
+    path: '/excel',
+    component: Layout,
+    redirect: '/excel/export-excel',
+    name: 'Excel',
+    meta: {
+      title: 'Excel',
+      icon: 'el-icon-menu',
+      isSubmenu: true
+    },
+    children: [
+      {
+        path: 'export-excel',
+        component: () => import('@/views/excel/export-excel'),
+        name: 'ExportExcel',
+        meta: { title: '导出 Excel' }
+      },
+      {
+        path: 'upload-excel',
+        component: () => import('@/views/excel/upload-excel'),
+        name: 'UploadExcel',
+        meta: { title: '上传 Excel' }
+      },
+    ]
+  },
+  {
+    path: '/zip',
+    component: Layout,
+    redirect: '/zip/download',
+    name: 'Zip',
+    meta: {
+      title: 'Zip',
+      icon: 'el-icon-menu',
+      isSubmenu: true
+    },
+    children: [
+      {
+        path: 'download',
+        component: () => import('@/views/zip'),
+        name: 'ExportZip',
+        meta: { title: 'Export Zip' }
+      },
+    ]
+  },
+  {
     path: '/icon',
     component: Layout,
+    redirect: '/icon/index',
     children: [
       {
         path: 'index',
-        component: () => import('@/views/icons/index'),
+        component: () => import('@/views/icons'),
         name: 'Icons',
         meta: { title: 'Icons', icon: 'el-icon-menu' }
       }
     ]
   },
+  {
+    path: '/pdf',
+    component: Layout,
+    redirect: '/pdf/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/pdf'),
+        name: 'PDF',
+        meta: { title: 'PDF', icon: 'el-icon-menu' }
+      }
+    ]
+  },
+  {
+    path: '/theme',
+    component: Layout,
+    redirect: '/theme/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/theme'),
+        name: 'Theme',
+        meta: { title: 'Theme', icon: 'el-icon-menu' }
+      }
+    ]
+  },
+  { path: '*', redirect: '/404', hidden: true }
 ];
 
-const router = new VueRouter({
+
+const createRouter = () =>  new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: constantRoutes
 });
+
+const router =createRouter();
+
+// 用于重置路由列表
+export function resetRouter() {
+  const newRouter = createRouter();
+  router.matcher = newRouter.matcher
+}
 
 export default router

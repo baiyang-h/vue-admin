@@ -35,6 +35,11 @@ const mutations = {
     state.addRoutes = routes;
     // 权限路由+默认显示的路由
     state.routes = constantRoutes.concat(routes);
+  },
+  // 清空routes、addRoutes
+  REMOVE_ROUTES(state) {
+    state.addRoutes = [];
+    state.routes = [];
   }
 };
 

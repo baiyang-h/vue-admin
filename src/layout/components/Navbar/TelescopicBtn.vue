@@ -1,8 +1,6 @@
 <!-- 伸缩按钮 -->
 <template>
-  <div id="telescopic-btn">
-    <i :class="isActive ? 'el-icon-s-fold' : 'el-icon-s-unfold'" @click="toggleClick"></i>
-  </div>
+  <i :class="isActive ? 'el-icon-s-fold' : 'el-icon-s-unfold'" @click="toggleClick"></i>
 </template>
 
 <script>
@@ -21,13 +19,3 @@
     }
   }
 </script>
-
-<style scoped lang="scss">
-#telescopic-btn {
-  padding: 0 15px;
-  i {
-    font-size: 24px;
-    cursor: pointer;
-  }
-}
-</style>

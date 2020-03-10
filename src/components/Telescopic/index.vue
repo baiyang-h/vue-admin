@@ -5,7 +5,7 @@
 
 <script>
   export default {
-    name: "TelescopicBtn",
+    name: "Telescopic",
     props: {
       isActive: {
         type: Boolean,

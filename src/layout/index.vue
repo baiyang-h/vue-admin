@@ -6,24 +6,29 @@
     <el-container>
       <el-header height="84px">
         <navbar />
+        <tags-view id="tags-view" />
       </el-header>
       <el-main>
-        <router-view />
+        <transition name="fade-main" mode="out-in">
+          <router-view />
+        </transition>
       </el-main>
     </el-container>
   </el-container>
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
   import Sidebar from './components/Sidebar';
   import Navbar from "./components/Navbar";
-  import { mapGetters } from 'vuex'
+  import TagsView from './components/TagsView'
 
   export default {
     name: "Layout",
     components: {
       Sidebar,
-      Navbar
+      Navbar,
+      TagsView
     },
     computed: {
       ...mapGetters([
@@ -34,12 +39,15 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   .el-container {
     height: 100%;
   }
   .el-header{
     padding: 0;
+    #tags-view {
+      margin-top: 5px;
+    }
   }
   .el-aside {
 

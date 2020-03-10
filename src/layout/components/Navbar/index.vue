@@ -1,6 +1,10 @@
 <template>
   <div class="navbar">
-    <telescopic-btn id="telescopic-btn" :is-active="sidebar.opened" @emit-toggleClick="toggleSideBar"  />
+    <!--  伸缩按钮  -->
+    <telescopic id="telescopic-btn" :is-active="sidebar.opened" @emit-toggleClick="toggleSideBar"  />
+    <!--  面包屑  -->
+    <breadcrumb />
+    <!--  右侧工具组  -->
     <div class="navbar-tools">
       <el-dropdown trigger="click">
         <div class="personal-center">
@@ -16,14 +20,16 @@
 </template>
 
 <script>
-  import TelescopicBtn from './TelescopicBtn'
   import { mapActions, mapGetters } from 'vuex'
+  import Telescopic from '@/components/Telescopic'
+  import Breadcrumb from '@/components/Breadcrumb'
   import avatar from '@/assets/images/admin.jpg'
 
   export default {
     name: "Navbar",
     components: {
-      TelescopicBtn
+      Telescopic,
+      Breadcrumb
     },
     data() {
       return {

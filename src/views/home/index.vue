@@ -1,6 +1,7 @@
 <template>
   <div>
     Home
+    <input type="text">
   </div>
 </template>
 

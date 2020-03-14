@@ -1,5 +1,8 @@
 <template>
-  <div>tinymce</div>
+  <div>
+    tinymce  富文本
+    <input type="text">
+  </div>
 </template>
 
 <script>

@@ -9,9 +9,7 @@
         <tags-view id="tags-view" />
       </el-header>
       <el-main>
-        <transition name="fade-main" mode="out-in">
-          <router-view />
-        </transition>
+        <app-main />
       </el-main>
     </el-container>
   </el-container>
@@ -19,16 +17,15 @@
 
 <script>
   import { mapGetters } from 'vuex'
-  import Sidebar from './components/Sidebar';
-  import Navbar from "./components/Navbar";
-  import TagsView from './components/TagsView'
+  import { Sidebar, Navbar, TagsView, AppMain } from './components'
 
   export default {
     name: "Layout",
     components: {
       Sidebar,
       Navbar,
-      TagsView
+      TagsView,
+      AppMain
     },
     computed: {
       ...mapGetters([
@@ -46,7 +43,7 @@
   .el-header{
     padding: 0;
     #tags-view {
-      margin-top: 5px;
+      height: 34px;
     }
   }
   .el-aside {

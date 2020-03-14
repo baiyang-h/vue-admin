@@ -46,9 +46,12 @@ const actions = {
       // 清空 用户信息
       dispatch('resetToken');
       // 清空 路由信息
-      commit('permission/REMOVE_ROUTES', null, {root: true});
+      commit('permission/REMOVE_ROUTES', null, { root: true });
       // 重置路由
       resetRouter();
+
+      // 清空tagsView
+      dispatch('tagsView/delAllVisitedViews', null, { root: true });
 
       resolve();
     })

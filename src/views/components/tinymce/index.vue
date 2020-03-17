@@ -1,7 +1,6 @@
 <template>
   <div>
     tinymce  富文本
-    <input type="text">
   </div>
 </template>
 

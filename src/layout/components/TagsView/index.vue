@@ -233,6 +233,7 @@
   padding-left: 10px;
   user-select: none;
   white-space: nowrap;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.12), 0 0 3px 0 rgba(0,0,0,0.04);
   /* 为了用于在当tags过多出现滚动条时，定位到最后一个tag */
   & >>> .el-scrollbar__view {
     display: inline-block;

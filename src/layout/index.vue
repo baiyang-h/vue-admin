@@ -50,8 +50,8 @@
 
   }
   .el-main {
-    background-color: #E9EEF3;
     color: #333;
+    padding: 30px;
   }
   .el-aside__sidebar {
     height: 100%;

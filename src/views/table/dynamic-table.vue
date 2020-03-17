@@ -5,13 +5,14 @@
       ref="table"
       :data="tableData"
       border
-      style="width: 100%">tableColumns
+      style="width: 100%">
       <el-table-column v-for="column in tableColumns" :key="column.prop" v-bind="column" />
     </el-table>
   </div>
 </template>
 
 <script>
+  import { request_dynamicTableData } from '@/api/table'
   import TableIconSetting from '@/components/TableIconSetting';
 
   const tableColumns = [
@@ -25,31 +26,19 @@
     components: {
       TableIconSetting
     },
-    mounted() {
-      this.tableData = [{
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-04',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1517 弄'
-      }, {
-        date: '2016-05-01',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1519 弄'
-      }, {
-        date: '2016-05-03',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1516 弄'
-      }];
-      this.tableColumnNames = this.getColumnNames(tableColumns);
+    async mounted() {
+      request_dynamicTableData().then(res => {
+        const { data } = res;
+        if(data.success) {
+          this.tableData = data.data.data;
+        }
+      })
     },
     data() {
       return {
         tableData: [],
         tableColumns,
-        tableColumnNames: []
+        tableColumnNames: this.getColumnNames(tableColumns)
       }
     },
     methods: {
@@ -57,7 +46,6 @@
         return tableColumns.map(column => column.label)
       },
       handleSave(displayColumns) {
-        console.log(displayColumns)
         this.tableColumns = tableColumns.filter(column => displayColumns.includes(column.label));
       }
     }

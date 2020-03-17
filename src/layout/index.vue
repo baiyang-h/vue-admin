@@ -42,6 +42,7 @@
   }
   .el-header{
     padding: 0;
+    z-index: 100;
     #tags-view {
       height: 34px;
     }

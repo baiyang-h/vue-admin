@@ -1,7 +1,9 @@
-const user = require('./user')
+const user = require('./user');
+const table = require('./table');
 
 const mocks = [
-  ...user
+  ...user,
+  ...table
 ];
 
 module.exports = mocks;

@@ -159,7 +159,7 @@
           }
         })
       },
-      closeAllTags(view) {
+      closeAllTags() {
         this.$store.dispatch('tagsView/delAllViews').then(({ visitedViews }) => {
           const { path } = visitedViews.pop();
           this.$router.push(path)

@@ -18,6 +18,12 @@ export default {
       meta: { title: '选择列' }
     },
     {
+      path: 'page-table',
+      component: () => import('@/views/table/page-table'),
+      name: 'PageTable',
+      meta: { title: '分页 Table' }
+    },
+    {
       path: 'drag-table',
       component: () => import('@/views/table/drag-table'),
       name: 'DragTable',

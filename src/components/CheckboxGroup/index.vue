@@ -2,7 +2,7 @@
   <div class="admin-checkbox-group">
     <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
     <div style="margin: 15px 0;"></div>
-    <el-checkbox-group v-model="checkedProps" @change="handleCheckedPropsChange">
+    <el-checkbox-group v-model="checkedProps">
       <el-checkbox v-for="prop in defaultCheckedProps" :label="prop" :key="prop" :class="mode === 'vertical' ? 'is-block' : ''">{{ prop }}</el-checkbox>
     </el-checkbox-group>
     <div class="btns">
@@ -42,35 +42,26 @@
       };
     },
     watch: {
-      // 监听传入的值，等到有值传入时，才渲染，默认一开始为全部选择
+      // 默认存在的所有选项
       defaultCheckedProps(val) {
         this.checkedProps = val;
       },
-      // 之后的渲染
+      // 默认激活的选项
       activeCheckedProps(val) {
         this.checkedProps = val;
       },
       checkedProps(val) {
+        const totalLength = this.defaultCheckedProps.length;
         this.isIndeterminate = !(val.length === this.defaultCheckedProps.length || !val.length);
+        this.checkAll = val.length === totalLength;
       }
+    },
+    mounted() {
+      this.checkedProps = this.defaultCheckedProps;
     },
     methods: {
       handleCheckAllChange(val) {
         this.checkedProps = val ? this.defaultCheckedProps : [];
-      },
-      handleCheckedPropsChange(val) {
-        const totalLength = this.defaultCheckedProps.length;
-        if(!val.length) {
-          this.checkAll = false;
-        } else {
-          this.checkAll = val.length === totalLength;
-        }
-      },
-      // 恢复默认
-      restDefaultProps() {
-        this.checkAll = true;
-        this.isIndeterminate = false;
-        this.checkedProps = this.defaultCheckedProps;
       },
       handleCancel() {
         this.checkedProps = this.activeCheckedProps;

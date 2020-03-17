@@ -1,6 +1,7 @@
 const Mock = require('mockjs');
 const mocks = require('./index');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 
 function registerRoutes(app) {
@@ -28,5 +29,6 @@ module.exports = app => {
   app.use(bodyParser.json());
   // 解析 application/x-www-form-urlencoded
   app.use(bodyParser.urlencoded());
+  app.use(cookieParser());
   registerRoutes(app)
 };

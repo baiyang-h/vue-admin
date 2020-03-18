@@ -18,6 +18,15 @@
           prop="address"
           label="地址">
       </el-table-column>
+      <el-table-column
+          prop="icon"
+          label="Drag"
+          align="center"
+          width="100">
+        <template>
+          <i class="el-icon-rank"></i>
+        </template>
+      </el-table-column>
     </el-table>
   </div>
 </template>
@@ -43,22 +52,44 @@
           let { data } = res;
           if(data.success) {
             this.tableData = data.data.data;
-            this.setSortable()
+            this.setSortable();
           } else {
             this.$message.error(data.msg);
           }
         })
       },
+      // 设置 drag Table 的属性和事件等
       setSortable() {
         const el = this.$refs.dragTable.$el.querySelector('.drag-table .el-table__body-wrapper > table > tbody');
-        this.sortable = Sortable.create(el);
+        this.sortable = Sortable.create(el, {
+          ghostClass: "sortable-ghost",
+          chosenClass: "sortable-chosen",
+          dragClass: "sortable-drag",
+          setData: function (dataTransfer) {
+            dataTransfer.setData('Text', '');
+          },
+          onEnd: (evt) => {
+            const v = this.tableData.splice(evt.oldIndex, 1)[0];
+            this.tableData.splice(evt.newIndex, 0, v);
+          }
+        });
       }
     }
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   .drag-table {
+    .el-icon-rank {
+      font-size: 24px;
+      cursor: pointer;
+    }
+    >>>.sortable-ghost {
+      background: #42b983;
+    }
+    /deep/.sortable-ghost {
+      background: #42b983;
+    }
 
   }
 </style>

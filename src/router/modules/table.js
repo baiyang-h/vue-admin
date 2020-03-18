@@ -36,16 +36,16 @@ export default {
       meta: { title: 'Table 内编辑' }
     },
     {
+      path: 'scroll-table',
+      component: () => import('@/views/table/scroll-table'),
+      name: 'ScrollTable',
+      meta: { title: '滚动加载' }
+    },
+    {
       path: 'complex-table',
       component: () => import('@/views/table/complex-table'),
       name: 'ComplexTable',
       meta: { title: '综合 Table' }
     },
-    {
-      path: 'scroll-table',
-      component: () => import('@/views/table/scroll-table'),
-      name: 'ScrollTable',
-      meta: { title: '滚动加载' }
-    }
   ]
 }

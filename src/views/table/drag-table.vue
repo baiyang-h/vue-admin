@@ -1,5 +1,8 @@
 <template>
   <div class="drag-table">
+    <a href="https://github.com/SortableJS/Sortable" target="_blank">[ 拖拽 ] https://sortablejs.github.io/Sortable/</a>
+    <br>
+    <br>
     <el-table
         ref="dragTable"
         :data="tableData"

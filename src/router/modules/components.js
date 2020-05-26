@@ -4,7 +4,7 @@ export default  {
   path: '/components',
   component: Layout,
   redirect: '/components/tinymce',
-  name: 'components',
+  name: 'Components',
   meta: {
     title: 'Components',
     icon: 'el-icon-menu',

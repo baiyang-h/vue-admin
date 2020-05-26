@@ -3,7 +3,7 @@
   <div v-if="!route.hidden">
     <el-submenu
       :index="resolvePath(route.path)"
-      v-if="isMenuitemOrSubmenu(route.children, route)"
+      v-if="isMenuItemOrSubmenu(route.children, route)"
       popper-append-to-body
     >
       <template slot="title">
@@ -50,7 +50,7 @@
       }
     },
     methods: {
-      isMenuitemOrSubmenu(children=[], route) {
+      isMenuItemOrSubmenu(children=[], route) {
         // 是否是el-submenu
         if(route.meta && route.meta.isSubmenu) {
           return true

@@ -225,11 +225,12 @@ const createRouter = () =>  new VueRouter({
   routes: constantRoutes
 });
 
-const router =createRouter();
+const router = createRouter();
 
 // 用于重置路由列表
 export function resetRouter() {
   const newRouter = createRouter();
+  // 官方没提供这个api，不过源码中存在
   router.matcher = newRouter.matcher
 }
 

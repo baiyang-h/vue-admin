@@ -133,7 +133,7 @@
       }
     },
     methods: {
-      tableRowClassName({row, rowIndex}) {
+      tableRowClassName({row}) {
         if (row.id === 1) {
           return 'warning-row';
         } else if (row.id === 8) {

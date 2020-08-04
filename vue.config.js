@@ -43,7 +43,8 @@ module.exports = {
       }
     }
   },
-  configureWebpack: config => {
+  //修改 webpack 配置
+  chainWebpack: config => {
     /*if (process.env.NODE_ENV === 'production') {
       config.entry.app = ['babel-polyfill', './src/main.js'];
       config.externals = {
@@ -52,6 +53,10 @@ module.exports = {
     } else {
       // 为开发环境修改配置...
     }*/
+  },
+  // 新增 webpack 配置
+  configureWebpack: {
+
   },
   devServer: {
     /*proxy: {
@@ -65,5 +70,15 @@ module.exports = {
       }
     }*/
     before: require('./mock/mock-server')
-  }
+  },
+  //第三方插件配置
+  // pluginOptions: {
+  //   'style-resources-loader': {
+  //     preProcessor: 'less',
+  //     patterns: [
+  //       // 插入全局样式
+  //       path.resolve(__dirname, 'src/assets/common.less')
+  //     ]
+  //   }
+  // }
 };
